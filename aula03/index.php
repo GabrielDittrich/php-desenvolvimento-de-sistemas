@@ -17,10 +17,11 @@
         include_once('form_cadastro.php');
         // ao usar o include, preferir usar o include_once
 
-        require_once('form_cadastro.php')
+        require_once('form_cadastro.php');
         // ao usar o require, preferir usar o require_once
 
         // qual usar (include x require): preferencialmente, require
+        require_once('form_pesquisa.php');
         ?>
 
     </center>

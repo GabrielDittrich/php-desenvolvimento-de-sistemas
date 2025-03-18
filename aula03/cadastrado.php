@@ -11,22 +11,21 @@
 
     <h1>Cliente Cadastrado</h1>
 
-
-    <p><a href="index.php">Voltar para Home</a></p>
-
     <?php
 
     // verificar se a página recebeu dados enviados via POST
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        // receber dados e mostrar na tela
+        // receber dados enviado via post e mostrar na tela
 
-        if (!empty($_POST['nome'] && !empty($_POST['email']) && !empty($_POST['telefone']) && !empty($_POST['endereco']))) {
+        $dados = $_POST;
 
-            echo "Nome: " . $_POST['nome'] . "<br>";
-            echo "Email: " . $_POST['email'] . "<br>";
-            echo "Telefone: " . $_POST['telefone'] . "<br>";
-            echo "Endereco: " . $_POST['endereco'] . "<br>";
+        if (!empty($dados['nome'] && !empty($dados['email']) && !empty($dados['telefone']) && !empty($dados['endereco']))) {
+
+            echo "Nome: " . $dados['nome'] . "<br>";
+            echo "Email: " . $dados['email'] . "<br>";
+            echo "Telefone: " . $dados['telefone'] . "<br>";
+            echo "Endereco: " . $dados['endereco'] . "<br>";
         } else {
             echo "<h3>Algum campo está em branco</h3>";
         }
@@ -42,6 +41,7 @@
     }
 
     ?>
+    <p><a href="index.php">Voltar para Home</a></p>
 </body>
 
 </html>
