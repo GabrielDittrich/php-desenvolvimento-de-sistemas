@@ -6,20 +6,20 @@
     <title>Cadastro</title>
 </head>
 <body>
-    <h1>Cadastro de aparelho eletrônico</h1>
-
     <?php 
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+        echo "<h1>Cadastro de aparelho eletrônico</h1>";
 
         $dados = $_POST;
 
         if(!empty($dados['nome']) && !empty($dados['wats']) && !empty($dados['horas']) && !empty($dados['dias']) && !empty($dados['valor_hora'])){
           echo "Nome do aparelho: " . $dados['nome']. "<br>";
-          echo "Consumo máximo em watss: " . $dados['wats'] . "<br>";
+          echo "Consumo máximo em watts: " . $dados['wats'] . "<br>";
           echo "Número de horas que o aparelho é ligado por dia: " . $dados['horas'] . "<br>";
-          echo "Número de dias que o aparelho ficará ligado no mês" . $dados['dias'] . "<br>";
-          echo "Valor do kilowatt-hora" . $dados['valor_hora'] . "<br>";
+          echo "Número de dias que o aparelho ficará ligado no mês: " . $dados['dias'] . "<br>";
+          echo "Valor do kilowatt-hora: " . $dados['valor_hora'] . "<br>";
 
         $consumo_max = $dados['wats'];
         $horas_pordias = $dados['horas'];
@@ -46,12 +46,14 @@
         if($consumo_aparelho <= 5){
             echo "<h2>O consumo do aparelho é: </h2> " . $consumo_aparelho . " é considerada categoria de consumo <strong>baixa</strong>";
 
-        }else if($consumo_aparelho > 5 && $consumo_aparelho <= 10 ){
+        }else if($consumo_aparelho <= 10 ){
             echo "<h2>O consumo do aparelho é: </h2>  " . $consumo_aparelho . " é considerada categoria <strong>moderada</strong>";
         }else if ($consumo_aparelho > 10){
-            echo "<h2>O consumo do aparelho </h2> " . $consumo_aparelho . " é condiderada categoria <strong>elevada</strong>";
+            echo "<h2>O consumo do aparelho </h2> " . $consumo_aparelho . " é considerada categoria <strong>elevada</strong>";
         }
         }
+    }else{
+        echo "<h2>Cadastre um formulario antes de vir para essa pagina </h2>";
     }
     ?>
 <br><br>
