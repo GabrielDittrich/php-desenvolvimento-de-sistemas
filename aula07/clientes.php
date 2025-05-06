@@ -45,8 +45,9 @@
     echo "<th>Nome </th>";
     echo "<th>Fone </th>";
     echo "<th>E-mail</th>";
+    echo "<th>Ações</th>"; // Começando  o excluir e editar
     echo "</tr>";
-    
+
     // Criamos um laço para percorrer os valores de 'resultado' que, originalmente
     // é um objeto. Enquanto tiver registros transformaremos o registro atual, ou seja
     // aquele que está sendo acessado na interação atual do laço, em um array associativo
@@ -58,6 +59,10 @@
         echo "<td>: " . $linha["nome"] . "</td>";
         echo "<td>: " . $linha["fone"] . "</td>";
         echo "<td>: " . $linha["email"] . "</td>";
+        echo '<td>
+                    <a href="excluir.php?id=' . $linha['id'] . '">Excluir</a> |
+                    <a href="editar.php?id=' . $linha['id'] . '">Editar</a>
+              </td>'; // Criando metodo de excluir
         echo "</tr>";
     }
     echo "</table>";
