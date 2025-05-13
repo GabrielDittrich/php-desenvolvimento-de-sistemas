@@ -1,4 +1,4 @@
-<?php    
+<?php
 require_once 'conexao.php'; // incluir arquivo de conexão 
 ?>
 <!DOCTYPE html>
@@ -8,13 +8,16 @@ require_once 'conexao.php'; // incluir arquivo de conexão
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aula 07 - Parte 02 - Editar Cliente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="container-fluid">
+    <?php require_once 'menu.php'; ?>
+
     <h1>Aula 07 - Parte 02 - Editar Cliente</h1>
 
     <?php
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $id = $_POST['id'];
@@ -29,8 +32,8 @@ require_once 'conexao.php'; // incluir arquivo de conexão
         }
 
         $conn = conectar_banco();
-        
-        $sql = "UPDATE tb_cadastro set nome=?, fone=?, email=? WHERE id=?";
+
+        $sql = "UPDATE tb_cadastro SET nome=?, fone=?, email=? WHERE id=?";
 
         $stmt = mysqli_prepare($conn, $sql);
 
@@ -48,7 +51,7 @@ require_once 'conexao.php'; // incluir arquivo de conexão
 
     } else {
 
-        if (isset($_GET['id'])) {
+        if (!isset($_GET['id'])) {
             exit('<h3>ID não informado</h3>');
         }
 
@@ -62,7 +65,6 @@ require_once 'conexao.php'; // incluir arquivo de conexão
 
         // se, ao tentar fazer um select, não for encontrado o cliente com o id fornecido
         if (!mysqli_num_rows($resultado) > 0) {
-            // mensagem de erro e encerramento o script
             exit("<h3>Cliente não localizado</h3>");
         }
 
@@ -73,18 +75,27 @@ require_once 'conexao.php'; // incluir arquivo de conexão
             <h2>Editando dados do Cliente</h2>
 
             <form action="editar.php" method="post">
-                <label for="nome">Nome: </label><br>
-                <input type="text" name="nome" id="nome" value="<?php echo $cliente['nome'] ?>"> <br><br>
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome: </label>
+                    <input type="text" class="form-control" name="nome" id="nome" value="<?php echo $cliente['nome']; ?>"
+                        required>
+                </div>
 
-                <label for="fone">Telefone: </label><br>
-                <input type="text" name="fone" id="fone" value="<?= $cliente['fone'] ?>"><br><br>
+                <div class="mb-3">
+                    <label for="fone" class="form-label">Telefone: </label>
+                    <input type="text" class="form-control" name="fone" id="fone" value="<?php echo $cliente['fone']; ?>"
+                        required>
+                </div>
 
-                <label for="email">E-mail: </label><br>
-                <input type="text" name="email" id="email" value="<?= $cliente['email'] ?>">
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail: </label>
+                    <input type="email" class="form-control" name="email" id="email" value="<?php echo $cliente['email']; ?>"
+                        required>
+                </div>
 
-                <input type="hidden" name="id" value="">
+                <input type="hidden" name="id" value="<?php echo $cliente['id']; ?>">
 
-                <button type="submit">Editar</button>
+                <button type="submit" class="btn btn-primary">Editar</button>
             </form>
             <?php
         }
@@ -92,10 +103,9 @@ require_once 'conexao.php'; // incluir arquivo de conexão
     }
     ?>
 
-    <p>
-        <a href="index.php">Home</a> |
-        <a href="clientes.php">Clientes</a>
-    </p>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

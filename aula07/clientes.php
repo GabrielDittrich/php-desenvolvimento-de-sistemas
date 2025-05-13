@@ -2,21 +2,15 @@
 <html lang="pt-br">
 
 <head>
-    <style>
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-    </style>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aula 07 - Clientes Cadastrados</title>
 </head>
 
-<body>
+<body class="container-fluid">
+<?php require_once 'menu.php';?>
 
     <h1>Aula 07 - Clientes Cadastros</h1>
 
@@ -39,8 +33,8 @@
 
 
 
-    echo "<table>";
-    echo "<tr>";
+    echo '<table class="table table-hover ">'; 
+    echo '<tr class="table-secondary">';
     echo "<th>ID #</th>";
     echo "<th>Nome </th>";
     echo "<th>Fone </th>";
@@ -60,8 +54,8 @@
         echo "<td>: " . $linha["fone"] . "</td>";
         echo "<td>: " . $linha["email"] . "</td>";
         echo '<td>
-                    <a href="excluir.php?id=' . $linha['id'] . '">Excluir</a> |
-                    <a href="editar.php?id=' . $linha['id'] . '">Editar</a>
+                    <a class="btn btn-danger" href="excluir.php?id=' . $linha['id'] . '">Excluir</a> |
+                    <a class="btn btn-warning" href="editar.php?id=' . $linha['id'] . '">Editar</a>
               </td>'; // Criando metodo de excluir
         echo "</tr>";
     }
@@ -71,10 +65,9 @@
 
     ?>
 
-    <p>
-        <a href="index.php">Voltar à Home</a>
-    </p>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
