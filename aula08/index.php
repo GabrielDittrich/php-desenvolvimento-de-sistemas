@@ -11,43 +11,33 @@
 
     <h1>Aula 08 - Sistema de Login</h1>
 
-    <h2>Informe os dados para login</h2>
+    <h2>Informe os dados para login:</h2>
 
     <?php
-    if (isset($_GET['code'])) {
 
-        $code = $_GET['code'];
+    require_once 'funcoes.php';
 
-        switch ($code) {
-            case 0:
-                $erro = "<h3>Você não tem permissão para acessar a página de destino</h3>";
-                break;
+    tratar_erros();
 
-            case 1:
-                $erro = "<h3>Usuário ou senha inválido. Tente novamente</h3>";
-                break;
-
-            default:
-                $erro = "";
-                break;
-        }
-        echo $erro;
-    }
     ?>
 
-    <form action="validacoes.php" method="post">
-        </p>
-        <label for="usuario">Usuário: </label>
-        <input type="text" name="usuario" id="usuario"><br>
-        <p>
+
+    <form action="verificar.php" method="post">
 
         <p>
-            <label for="senha">Senha: </label>
+            <label for="usuario">Usuário:</label><br>
+            <input type="text" name="usuario" id="usuario">
+        </p>
+
+        <p>
+            <label for="senha">Senha:</label><br>
             <input type="password" name="senha" id="senha">
         </p>
 
         <button type="submit">Login</button>
+
     </form>
+
 </body>
 
 </html>

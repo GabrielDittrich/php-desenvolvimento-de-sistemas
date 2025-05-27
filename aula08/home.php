@@ -17,6 +17,7 @@
     <p>
         <a href="logout.php">Logout</a>
     </p>
+
 </body>
 
 </html>
